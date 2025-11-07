@@ -1,0 +1,42 @@
+---
+title: "Nombre del examen"
+subtitle: "Tipo de Examen. Identificador del examen. Curso"
+format:
+    pdf:
+        colorlinks: true
+        fontsize: 11pt
+        geometry:
+        - margin=2cm
+        whitespace: small
+        linestretch: 1
+---
+
+```{=latex}
+\vspace{-1.5cm}
+```
+
+![](image.png){ fig-align="center" width="40%"} 
+
+
+### Ejemplo 1
+
+- **Entrada:**
+
+- **Salida:**
+
+### Ejemplo 2
+
+- **Entrada:**
+
+- **Salida:**
+
+### Ejemplo 3
+
+- **Entrada:**
+
+- **Salida:**
+
+:::{.callout-important title="**IMPORTANTE**"}
+- No se pueden importar otros módulos o bibliotecas externas.
+- No se puede cambiar la signatura de la función solución. El cambio de nombre de esta, de parámetros o de retorno, resultará en todo el examen fallido ante el probador automático.
+:::

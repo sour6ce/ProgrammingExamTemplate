@@ -1,0 +1,9 @@
+# Quarto temporary files
+**/text_files
+**/*.log
+**/*.tex
+**/*.aux
+
+# Output files
+**/*.pdf
+**/*.zip
