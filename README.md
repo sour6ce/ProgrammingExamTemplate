@@ -18,7 +18,8 @@ This project provides a structured template for creating programming exams that 
 │       ├── main.py         # Test cases and main execution file
 │       └── solve.py        # Solution template (students modify this)
 ├── zips/                   # Generated zip files (created after packaging)
-├── packing.py              # Script to package exams into zip files
+├── packages/               # Generated folder packages (created after folder packaging)
+├── packing.py              # Script to package exams into zip files or folders
 └── makefile                # Build automation
 
 ```
@@ -56,6 +57,8 @@ This will render all `text.qmd` files in exam directories to `text.pdf`.
 
 ### Packaging Exams
 
+#### Zip-based Packaging
+
 To build PDFs and package all exams into zip files:
 
 ```bash
@@ -72,12 +75,36 @@ This will:
 
 The zip filename is derived from the exam title in the `text.qmd` YAML frontmatter.
 
+#### Folder-based Packaging
+
+To build PDFs and copy all exams to folders instead of zip files:
+
+```bash
+make package-folder
+```
+
+This will:
+
+1. Build all PDF files from `.qmd` files
+2. Create folders in the `packages/` directory
+3. Each folder contains:
+   - The PDF (renamed based on the exam title from `text.qmd`)
+   - All files from the `src/` directory (preserving directory structure)
+
+The folder name is derived from the exam title in the `text.qmd` YAML frontmatter.
+
 ### Cleaning Generated Files
 
 To remove all generated PDF files:
 
 ```bash
 make clean
+```
+
+To remove all generated packages (both zip files and folders):
+
+```bash
+make clean-packages
 ```
 
 ## Exam Template Structure
@@ -125,6 +152,7 @@ from solve import solution_function
 
 ## Notes
 
-- PDF filenames in zip files are sanitized to be valid filenames
+- PDF filenames in packages are sanitized to be valid filenames
 - Only directories containing both `text.pdf` and `src/` will be packaged
-- Existing zip files are skipped during packaging (to avoid overwriting)
+- Existing zip files and folders are skipped during packaging (to avoid overwriting)
+- You can use `python packing.py --folder` directly to use folder-based packaging without make

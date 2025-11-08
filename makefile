@@ -14,6 +14,14 @@ build: $(PDF_FILES)
 package: build
 	python packing.py
 
+.PHONY: package-folder
+package-folder: build
+	python packing.py --folder
+
 .PHONY: clean
 clean:
 	rm -f $(PDF_FILES)
+
+.PHONY: clean-packages
+clean-packages:
+	rm -rf zips packages
